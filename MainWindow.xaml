@@ -5,15 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChatNet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1000">
-    <Grid>
+        Title="ChatNet" Height="500" Width="1000">
+    <Window.Resources>
+        <Style TargetType="Button" x:Key="ButtonUsers">
+            <Setter Property="Height" Value="30"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Background" Value="#FF668EBB"/>
+        </Style>
+    </Window.Resources>
+    <Grid x:Name="ContainerApp">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
-            
+        <Grid x:Name="LeftPartWindow" Grid.Column="0" Background="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <Button Width="30" HorizontalAlignment="Left" Margin="10,7,0,7" BorderBrush="DarkSlateBlue" BorderThickness="2" Background="White" />
+            <TextBox  Grid.Row="0" Margin="45,7,7,7" BorderBrush="DarkSlateBlue" BorderThickness="2" VerticalContentAlignment="Center"/>
+            <StackPanel Grid.Row="1" Margin="3">
+                <Button Style="{StaticResource ButtonUsers}"/>
+                <Button Style="{StaticResource ButtonUsers}"/>
+                <Button Style="{StaticResource ButtonUsers}"/>
+                <Button Style="{StaticResource ButtonUsers}"/>
+            </StackPanel>
+        </Grid>
+
+
+
+
+        <Grid x:Name="RightPartWindow" Grid.Column="1" Background="DarkSlateBlue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="9*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <TextBox IsReadOnly="True" IsReadOnlyCaretVisible="False">
+                
+            </TextBox>
+            <!--<RichTextBox x:Name="Messages" Grid.Row="1" Background="Transparent" BorderThickness="0" Margin="10" IsReadOnly="True">
+                
+            </RichTextBox>-->
+            <Border Grid.Row="2" CornerRadius="50">
+                <TextBox x:Name="TextForMessage" Margin="0,0,40,0" VerticalContentAlignment="Center" BorderBrush="White" AcceptsReturn="True" BorderThickness="0" />
+            </Border>
+            <Button Grid.Row="2" HorizontalAlignment="Right" Width="40" Background="White" BorderBrush="White" Click="SendMessage">
+                <Image Source="\Resources\send_message.png" Stretch="Fill" OpacityMask="Black"/>
+            </Button>
         </Grid>
     </Grid>
 </Window>
